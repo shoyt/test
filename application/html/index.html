@@ -17,7 +17,7 @@
       document.addEventListener(
                                 'DOMContentLoaded'  ,
                                 function () {ipcRenderer.send('main-window-loaded')}
-      )
+                               )
       ipcRenderer.on(
                       'results-sent'  ,
                       function(event, results) {                     
