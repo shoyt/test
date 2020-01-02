@@ -19,7 +19,7 @@ app.on(
                                           backgroundColor : 'lightgray'                 ,
                                           title           : configuration.productName   ,
                                           show            : false                       ,
-                                          // fullscreen      : true                        ,
+                                       // fullscreen      : true                        ,
                                           webPreferences  : {
                                                               nodeIntegration : true    ,
                                                               defaultEncoding : 'UTF-8'
@@ -56,15 +56,12 @@ app.on(
                                   
           mainWindow.on(
                           'closed'  , 
-                          function () {
-                            mainWindow = null
-                          }
+                          function () { mainWindow = null }
                        )            
 
           ipcMain.on(
                       'main-window-loaded'  ,
                       function() {
-                        console.log('ipcMain.on.main-window-loaded')
                         var records = db.execute(
                                                   "SELECT * FROM people WHERE userName LIKE :userName", 
                                                   { ':userName' : '%' } 
