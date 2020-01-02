@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Inspection Data Collection</title>
+    <style>
+      .person
+      {
+        flex  : 1;
+      }
+    </style>
+    <script>
+      const electron    = require('electron')
+      const ipcRenderer = electron.ipcRenderer
+      document.addEventListener(
+                                'DOMContentLoaded'  ,
+                                function () {
+                                  ipcRenderer.send('main-window-loaded')
+                                  ipcRenderer.on(
+                                                'results-sent'  ,
+                                                function(evt, results) {
+                                                  console.log('ipcRenderer.results-sent')
+                                                  console.log(results)
+                                                  var people  = document.getElementById('people')
+                                                  var html    = '';
+                                                  for (var i = 0; i < results.length; i++) {
+                                                    html += '<span class="person">' + results[i].firstName + ' ' + results[i].lastName + '</span>'
+                                                  }
+                                                  people.innerHTML = html
+                                                }
+                                             )
+                                }
+      )
+    </script>
+  </head>
+  <body>
+    <div id="people" class="content">
+      <span class="person">Nobody</span>
+    </div>
+  </body>
+</html>
