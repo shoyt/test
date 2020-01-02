@@ -1,10 +1,10 @@
 {
-  "name": "inspection",
+  "name": "sqllite",
   "productName": "Local SQLite Example",
   "version": "1.0.0",
-  "description": "Demonstrates database-driven Electron using local SQLite.",
+  "description": "Sample application using sqlite via sql.js",
   "main": "main.js",
-  "repository": "https://github.com/shoyt/inpsection.git",
+  "repository": "https://github.com/shoyt/test.git",
   "author": "Steven Hoyt",
   "license": "UNLICENCED",
   "devDependencies": {},
