@@ -1,3 +1,5 @@
+'use strict'
+
 const electron    = require('electron')
 const ipcRenderer = electron.ipcRenderer
 document.addEventListener(
