@@ -16,27 +16,23 @@
       const ipcRenderer = electron.ipcRenderer
       document.addEventListener(
                                 'DOMContentLoaded'  ,
-                                function () {
-                                  ipcRenderer.send('main-window-loaded')
-                                  ipcRenderer.on(
-                                                'results-sent'  ,
-                                                function(evt, results) {
-                                                  console.log('ipcRenderer.results-sent')
-                                                  console.log(results)
-                                                  var people  = document.getElementById('people')
-                                                  var html    = '';
-                                                  for (var i = 0; i < results.length; i++) {
-                                                    html += '<span class="person">' + results[i].firstName + ' ' + results[i].lastName + '</span>'
-                                                  }
-                                                  people.innerHTML = html
-                                                }
-                                             )
-                                }
+                                function () {ipcRenderer.send('main-window-loaded')}
       )
+      ipcRenderer.on(
+                      'results-sent'  ,
+                      function(event, results) {                     
+                        var people  = document.getElementById('people')
+                        var html    = '';
+                        for (var i = 0; i < results.length; i++) {
+                          html += '<span class="person">' + results[i].firstName + ' ' + results[i].lastName + '</span>'
+                        }
+                        people.innerHTML = html
+                      }
+                    )      
     </script>
   </head>
   <body>
-    <div id="people" class="content">
+    <div id="people" class="content" style="flex-direction:column;">
       <span class="person">Nobody</span>
     </div>
   </body>
