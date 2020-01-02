@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../css/main.css">
-    <title>Inspection Data Collection</title>
+    <title>Test</title>
     <style>
       .person
       {
@@ -12,23 +12,8 @@
       }
     </style>
     <script>
-      const electron    = require('electron')
-      const ipcRenderer = electron.ipcRenderer
-      document.addEventListener(
-                                'DOMContentLoaded'  ,
-                                function () {ipcRenderer.send('main-window-loaded')}
-                               )
-      ipcRenderer.on(
-                      'results-sent'  ,
-                      function(event, results) {                     
-                        var people  = document.getElementById('people')
-                        var html    = '';
-                        for (var i = 0; i < results.length; i++) {
-                          html += '<span class="person">' + results[i].firstName + ' ' + results[i].lastName + '</span>'
-                        }
-                        people.innerHTML = html
-                      }
-                    )      
+      let path = require('path')
+      require(path.join(require('electron-root-path').rootPath, 'application', 'controllers', 'index.js'))
     </script>
   </head>
   <body>
